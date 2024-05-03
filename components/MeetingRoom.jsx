@@ -29,7 +29,7 @@ const MeetingRoom = () => {
   const isPersonalRoom = !!searchParams.get("personal");
   const callingState = useCallCallingState();
 
-  const [layout, setLayout] = useState("speaker-left");
+  const [layout, setLayout] = useState("grid");
   const [showParticipants, setShowParticipants] = useState(false);
 
   if (callingState !== CallingState.JOINED) return <Loader />;
@@ -62,7 +62,10 @@ const MeetingRoom = () => {
       </div>
 
       <div className="fixed bottom-0 flex w-full items-center justify-center gap-5 flex-wrap">
-        <CallControls onLeave={() => router.push("/")} />
+        <CallControls
+          onLeave={() => router.push("/")}
+          onClose={() => router.push("/")}
+        />
 
         <DropdownMenu>
           <div className="flex items-center">
